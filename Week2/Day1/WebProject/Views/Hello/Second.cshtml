@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>this the third one @ViewBag.Name</h1>
+
+    <p>@ViewBag.MyArray</p>
+
+    @{
+        foreach (int i in ViewBag.MyArray)
+        {
+            <p>@i</p>
+        }
+    }
+</body>
+
+</html>
