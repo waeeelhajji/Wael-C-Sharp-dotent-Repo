@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome , @Context.Session.GetString("User")</h1>
+
+    <h1 class="display-4">Most recent Number : @Context.Session.GetInt32("Sum")</h1>
+    <form action="setName" method="post">
+        <label for="Name">Name :</label>
+        <input type="text" name="Name" id="Name" class="form-control" />
+        @* <input type="Submit" value="Add Name " class="btn btn-primary" /> <br /><br /><br /> *@
+        <label for="Name">the Number is :</label>
+        <input type="number" name="Num" id="Num" class="form-control" />
+        <input type="Submit" value="Add Number " class="btn btn-primary" />
+        <a href="/delete" class="btn btn-danger">Clear Session</a>
+
+    </form>
+</div>
