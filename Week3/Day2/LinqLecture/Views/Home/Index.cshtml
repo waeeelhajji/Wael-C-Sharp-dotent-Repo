@@ -1,0 +1,151 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1>All Games in the database</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Genre</th>
+            <th>Rating</th>
+            <th>Platform</th>
+        </tr>
+        @foreach (Game g in @ViewBag.allGamesFromData)
+        {
+            <tr>
+                <td>@g.Title</td>
+                <td>$@g.Price</td>
+                <td>@g.Genre</td>
+                <td>@g.Rating</td>
+                <td>@g.Platform</td>
+            </tr>
+        }
+
+    </table>
+    <h1>Ordred Games in the database</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Genre</th>
+            <th>Rating</th>
+            <th>Platform</th>
+        </tr>
+        @foreach (Game g in @ViewBag.Ordered)
+        {
+            <tr>
+                <td>@g.Title</td>
+                <td>$@g.Price</td>
+                <td>@g.Genre</td>
+                <td>@g.Rating</td>
+                <td>@g.Platform</td>
+            </tr>
+        }
+
+    </table>
+    <h1>Ordred Games by Price in the database</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Genre</th>
+            <th>Rating</th>
+            <th>Platform</th>
+        </tr>
+        @foreach (Game g in @ViewBag.OrdPrice)
+        {
+            <tr>
+                <td>@g.Title</td>
+                <td>$@g.Price</td>
+                <td>@g.Genre</td>
+                <td>@g.Rating</td>
+                <td>@g.Platform</td>
+            </tr>
+        }
+
+    </table>
+    <h1>Ordred Games by Price and Title in the database</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Genre</th>
+            <th>Rating</th>
+            <th>Platform</th>
+        </tr>
+        @foreach (Game g in @ViewBag.OrderPT)
+        {
+            <tr>
+                <td>@g.Title</td>
+                <td>$@g.Price</td>
+                <td>@g.Genre</td>
+                <td>@g.Rating</td>
+                <td>@g.Platform</td>
+            </tr>
+        }
+
+    </table>
+    <h1>All the Games that availeble in ALL Platforms</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Genre</th>
+            <th>Rating</th>
+            <th>Platform</th>
+        </tr>
+        @foreach (Game g in @ViewBag.AllPlatforms)
+        {
+            <tr>
+                <td>@g.Title</td>
+                <td>$@g.Price</td>
+                <td>@g.Genre</td>
+                <td>@g.Rating</td>
+                <td>@g.Platform</td>
+            </tr>
+        }
+
+    </table>
+    <h1>Top 3 of games that have Rating M and the low Price</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Genre</th>
+            <th>Rating</th>
+            <th>Platform</th>
+        </tr>
+        @foreach (Game g in @ViewBag.topGames)
+        {
+            <tr>
+                <td>@g.Title</td>
+                <td>$@g.Price</td>
+                <td>@g.Genre</td>
+                <td>@g.Rating</td>
+                <td>@g.Platform</td>
+            </tr>
+        }
+
+    </table>
+    <h1>You serach about Rocket League</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Genre</th>
+            <th>Rating</th>
+            <th>Platform</th>
+        </tr>
+        <tr>
+            <td>@ViewBag.singLeGame.Title</td>
+            <td>$@ViewBag.singLeGame.Price</td>
+            <td>@ViewBag.singLeGame.Genre</td>
+            <td>@ViewBag.singLeGame.Rating</td>
+            <td>@ViewBag.singLeGame.Platform</td>
+        </tr>
+
+    </table>
+
+</div>
