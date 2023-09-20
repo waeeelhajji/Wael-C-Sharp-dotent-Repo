@@ -29,6 +29,7 @@ public class HomeController : Controller
             // we need to check if the email is unique 
             if (_context.Users.Any(w => w.Email == newUser.Email))
             {
+                // we have a problem. this user already has this email in database
                 ModelState.AddModelError("Email", "Email is already in use!");
                 return View("Index");
             }
@@ -42,7 +43,6 @@ public class HomeController : Controller
         {
             return View("Index");
         }
-
     }
     [HttpPost("user/login")]
     public IActionResult Login(LoginUser loginUser)
@@ -50,7 +50,7 @@ public class HomeController : Controller
         if (ModelState.IsValid)
         {
             // step 1 : find their email ad if we can't find it throw an error
-            loginUser userInDB = _context.Users.FirstOrDefault(a => a.Email == loginUser.LogEmail);
+            User userInDB = _context.Users.FirstOrDefault(a => a.Email == loginUser.LogEmail);
             if (userInDB == null)
             {
                 // there was no Email in the database
@@ -70,7 +70,10 @@ public class HomeController : Controller
                 return RedirectToAction("success");
             }
         }
-
+        else
+        {
+            return View("Index");
+        }
     }
     [HttpGet("success")]
     public IActionResult Success()

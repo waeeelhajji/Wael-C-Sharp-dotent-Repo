@@ -4,10 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LogregDemo.Models;
 
 
-public class LogUser
+public class LoginUser
 {
-
-
     [EmailAddress]
     [Required]
     public string LogEmail { get; set; }
