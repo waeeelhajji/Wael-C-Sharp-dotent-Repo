@@ -1,6 +1,6 @@
 @model Pet
 <h2>Add a Pet</h2>
-<form action="/owner/add" method="post">
+<form action="/pet/add" method="post">
     <div class="from-group">
         <label for="Name">Name</label>
         <input asp-for="Name" class="form-control">
@@ -31,4 +31,9 @@
 
 <h2>All pets with Owners</h2>
 
-<p>Display all pets </p>
+<ul>
+    @foreach (var p in ViewBag.AllPets)
+    {
+        <li>@p.Name @p.Species is owned by: @p.Owner.Name</li>
+    }
+</ul>

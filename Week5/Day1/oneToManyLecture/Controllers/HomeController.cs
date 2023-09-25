@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using oneToManyLecture.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace oneToManyLecture.Controllers;
 
@@ -17,7 +18,8 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        ViewBag.AllOwners = _context.Owners.ToList();
+        ViewBag.AllOwners = _context.Owners.Include(p => p.PetOwned).ToList();
+        // ViewBag.AllOwners = _context.Owners.ToList();
         return View();
     }
     [HttpPost("owner/add")]
@@ -31,15 +33,32 @@ public class HomeController : Controller
             return RedirectToAction("Index");
 
         }else {
-            ViewBag.AllOwners = _context.Owners.ToList();
+            ViewBag.AllOwners = _context.Owners.Include(p => p.PetOwned).ToList();
             return View("Index");
         }
     }
     [HttpGet("Pet")]
     public IActionResult Pets()
     {
+        ViewBag.AllPets = _context.Pets.Include(a => a.Owner).ToList();
         ViewBag.AllOwners = _context.Owners.ToList();
         return View();
+    }
+    [HttpPost("pet/add")]
+    public IActionResult AddPet(Pet newPet)
+    {
+        if(ModelState.IsValid)
+        {
+            // we can add to the database
+            _context.Add(newPet);
+            _context.SaveChanges();
+            return RedirectToAction("Pets");
+
+        }else {
+            ViewBag.AllOwners = _context.Owners.ToList();
+            ViewBag.AllPets = _context.Pets.Include(a => a.Owner).ToList();
+            return View("Pets");
+        }
     }
 
     public IActionResult Privacy()
