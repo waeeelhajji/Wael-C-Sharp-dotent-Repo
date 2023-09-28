@@ -1,0 +1,47 @@
+@{
+    ViewData["Title"] = "Movie Page";
+}
+
+@model Movie
+<div class="text-center">
+    <h1>Movies</h1>
+    <div class="row">
+        <div class="col-6">
+            <h2>Add Movie Form</h2>
+            <form action="/add/movie" method="post">
+                <div class="form-group">
+                    <label for="Title">Title</label>
+                    <input asp-for="Title" class="form-control">
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Poster">Poster</label>
+                    <input asp-for="Poster" class="form-control">
+                    <span asp-validation-for="Poster" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Genre">Genre</label>
+                    <input asp-for="Genre" class="form-control">
+                    <span asp-validation-for="Genre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Add Movie" class="btn btn-warning" />
+                </div>
+            </form>
+        </div>
+        <div class="col-6">
+            <h2>All Movies</h2>
+            @foreach (var m in ViewBag.AllMovies)
+            {
+                <h3>@m.Title</h3>
+                <li>@m.Poster</li>
+                <li>@m.Genre</li>
+                @foreach (Association i in m.MyActors)
+                {
+                    <h4>@i.Actor.Name</h4>
+                }
+            }
+        </div>
+    </div>
+
+</div>
