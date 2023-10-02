@@ -1,0 +1,43 @@
+<h1>All Songs</h1>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Artist
+        </th>
+        <th>
+            Duration
+        </th>
+        <th>
+            Genre
+        </th>
+        <th>
+            Likes
+        </th>
+    </tr>
+    @foreach (Song s in ViewBag.AllSongs)
+    {
+        <tr>
+            <td>
+                @s.Title
+            </td>
+            <td>
+                @s.Artist.Name
+            </td>
+            <td>
+                @s.DurMinutes:@s.DurSeconds
+            </td>
+            <td>
+                @s.Genre
+            </td>
+            <td>
+                0
+            </td>
+        </tr>
+
+    }
+
+</table>
